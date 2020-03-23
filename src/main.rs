@@ -1,3 +1,16 @@
-fn main() {
-    println!("Hello, world!");
+use serde::Deserialize;
+use std::error;
+
+#[derive(Deserialize, Debug)]
+struct Resp {
+    answer: String,
+    forced: bool,
+    image: String
+}
+
+fn main() -> Result<(), Box<dyn error::Error>> {
+    let resp: Resp = reqwest::blocking::get("https://yesno.wtf/api")?
+        .json()?;
+    println!("{}", resp.image);
+    Ok(())
 }
