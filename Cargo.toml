@@ -5,8 +5,8 @@ authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-reqwest = { version = "0.10", features = ["blocking", "json"] }
 serde = { version = "1.0", features = ["derive"] }
+minreq = { version = "2.1", features = ["json-using-serde", "https"] }
 
 [profile.release]
 panic = "abort"

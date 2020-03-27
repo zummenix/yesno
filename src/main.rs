@@ -9,8 +9,7 @@ struct Resp {
 }
 
 fn main() -> Result<(), Box<dyn error::Error>> {
-    let resp: Resp = reqwest::blocking::get("https://yesno.wtf/api")?
-        .json()?;
+    let resp: Resp = minreq::get("https://yesno.wtf/api").send()?.json()?;
     println!("{}", resp.image);
     Ok(())
 }
