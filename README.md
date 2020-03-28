@@ -3,8 +3,8 @@ CLI to get funny gifs from https://yesno.wtf
 
 ## Usage
 
-The tool accepts one argument that should be either `yes`, `no` or `maybe`. It prints a link in
-stdout. If run without arguments it prints a gif for randomly chosen answer.
+The tool accepts one argument that should be either `yes`, `no` or `maybe` and prints a link to a
+gif in stdout. You can run it without arguments to get a link for a random answer.
 
 ### Examples
 
