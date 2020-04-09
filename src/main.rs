@@ -38,7 +38,10 @@ fn url(answer: Option<Answer>) -> String {
 
 fn main() -> Result<(), Box<dyn error::Error>> {
     let opt = Opt::from_args();
-    let resp: Resp = minreq::get(url(opt.answer)).send()?.json()?;
+    let resp: Resp = minreq::get(url(opt.answer))
+        .with_timeout(10)
+        .send()?
+        .json()?;
     println!("{}", resp.image);
     Ok(())
 }
