@@ -129,6 +129,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "main_error"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3516df0fb44d98fe6d6e859d224adfb7b6686447937e5b96308d6061595eed04"
+
+[[package]]
 name = "minreq"
 version = "2.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -473,6 +479,7 @@ checksum = "712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f"
 name = "yesno"
 version = "0.1.0"
 dependencies = [
+ "main_error",
  "minreq",
  "serde",
  "structopt",

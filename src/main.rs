@@ -1,5 +1,4 @@
 use serde::Deserialize;
-use std::error;
 use structopt::{clap::arg_enum, StructOpt};
 
 arg_enum! {
@@ -36,7 +35,8 @@ fn url(answer: Option<Answer>) -> String {
     base_url
 }
 
-fn main() -> Result<(), Box<dyn error::Error>> {
+
+fn main() -> Result<(), main_error::MainError> {
     let opt = Opt::from_args();
     let resp: Resp = minreq::get(url(opt.answer))
         .with_timeout(10)
