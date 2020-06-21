@@ -27,14 +27,13 @@ struct Resp {
 fn url(answer: Option<Answer>) -> String {
     let mut base_url = String::from("https://yesno.wtf/api");
     match answer {
-        Some(Answer::Yes) => base_url.push_str("?force=yes"),
-        Some(Answer::No) => base_url.push_str("?force=no"),
-        Some(Answer::Maybe) => base_url.push_str("?force=maybe"),
+        Some(Answer::Yes) => base_url += "?force=yes",
+        Some(Answer::No) => base_url += "?force=no",
+        Some(Answer::Maybe) => base_url += "?force=maybe",
         None => (),
     }
     base_url
 }
-
 
 fn main() -> Result<(), main_error::MainError> {
     let opt = Opt::from_args();
