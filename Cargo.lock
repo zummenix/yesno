@@ -136,9 +136,9 @@ checksum = "3516df0fb44d98fe6d6e859d224adfb7b6686447937e5b96308d6061595eed04"
 
 [[package]]
 name = "minreq"
-version = "2.1.0"
+version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de24aea8b7ae2092e5bd3ae8efcf4ca8114f8a33982d4e269d2193c479822521"
+checksum = "ab229c252995e9d56cc66857f3ab2c41e3138b1a6c92089f013698388e64d6bd"
 dependencies = [
  "lazy_static",
  "rustls",
