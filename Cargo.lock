@@ -154,9 +154,9 @@ checksum = "bb63bb1e282e0b6aba0addb1f0e87cb5181ea68142b2dfd21ba108f8e8088a64"
 
 [[package]]
 name = "minreq"
-version = "2.2.1"
+version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2466d0a7e6bfcd54f69e4a17d4a4318985aaaf7fe3df4cd3b6f11ff551129ca3"
+checksum = "85b112458b07e0864c7415847c423fe758c7189a28e72347e95d92c4bfd33f5d"
 dependencies = [
  "native-tls",
  "serde",
