@@ -1,21 +1,18 @@
+use clap::{ArgEnum, Parser};
 use serde::Deserialize;
-use structopt::{clap::arg_enum, StructOpt};
 
-arg_enum! {
-    #[derive(PartialEq, Debug)]
-    enum Answer {
-        Yes,
-        No,
-        Maybe
-    }
+#[derive(ArgEnum, Clone, PartialEq, Debug)]
+enum Answer {
+    Yes,
+    No,
+    Maybe,
 }
 
-#[derive(StructOpt, Debug)]
 /// Get funny gifs from https://yesno.wtf
+#[derive(Parser, Debug)]
 struct Opt {
-    #[structopt(possible_values = &Answer::variants())]
-    #[structopt(hide_possible_values = true, case_insensitive = true)]
     /// Answer either `yes`, `no` or `maybe`
+    #[clap(arg_enum, hide_possible_values = true, ignore_case = true)]
     answer: Option<Answer>,
 }
 
@@ -36,7 +33,7 @@ fn url(answer: Option<Answer>) -> String {
 }
 
 fn main() -> Result<(), main_error::MainError> {
-    let opt = Opt::from_args();
+    let opt = Opt::parse();
     let resp: Resp = minreq::get(url(opt.answer))
         .with_timeout(10)
         .send()?
