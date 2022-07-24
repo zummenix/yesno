@@ -8,9 +8,19 @@ enum Answer {
     Maybe,
 }
 
+impl Answer {
+    fn str_value(&self) -> &'static str {
+        match self {
+            Answer::Yes => "yes",
+            Answer::No => "no",
+            Answer::Maybe => "maybe",
+        }
+    }
+}
+
 /// Get funny gifs from https://yesno.wtf
 #[derive(Parser, Debug)]
-struct Opt {
+struct Arg {
     /// Answer either `yes`, `no` or `maybe`
     #[clap(arg_enum, hide_possible_values = true, ignore_case = true)]
     answer: Option<Answer>,
@@ -21,23 +31,18 @@ struct Resp {
     image: String,
 }
 
-fn url(answer: Option<Answer>) -> String {
-    let mut base_url = String::from("https://yesno.wtf/api");
-    match answer {
-        Some(Answer::Yes) => base_url += "?force=yes",
-        Some(Answer::No) => base_url += "?force=no",
-        Some(Answer::Maybe) => base_url += "?force=maybe",
-        None => (),
+fn request(answer: Option<Answer>) -> minreq::Request {
+    let req = minreq::get("https://yesno.wtf/api");
+    if let Some(value) = answer.as_ref().map(Answer::str_value) {
+        req.with_param("force", value)
+    } else {
+        req
     }
-    base_url
 }
 
 fn main() -> Result<(), main_error::MainError> {
-    let opt = Opt::parse();
-    let resp: Resp = minreq::get(url(opt.answer))
-        .with_timeout(10)
-        .send()?
-        .json()?;
+    let arg = Arg::parse();
+    let resp: Resp = request(arg.answer).with_timeout(10).send()?.json()?;
     println!("{}", resp.image);
     Ok(())
 }
