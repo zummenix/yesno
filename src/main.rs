@@ -1,7 +1,7 @@
-use clap::{ArgEnum, Parser};
+use clap::{Parser, ValueEnum};
 use serde::Deserialize;
 
-#[derive(ArgEnum, Clone, PartialEq, Debug)]
+#[derive(ValueEnum, Clone, PartialEq, Debug)]
 enum Answer {
     Yes,
     No,
@@ -22,7 +22,7 @@ impl Answer {
 #[derive(Parser, Debug)]
 struct Arg {
     /// Answer either `yes`, `no` or `maybe`
-    #[clap(arg_enum, hide_possible_values = true, ignore_case = true)]
+    #[clap(value_enum, hide_possible_values = true, ignore_case = true)]
     answer: Option<Answer>,
 }
 
