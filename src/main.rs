@@ -22,7 +22,7 @@ impl Answer {
 #[derive(Parser, Debug)]
 struct Arg {
     /// Answer either `yes`, `no` or `maybe`
-    #[clap(value_enum, hide_possible_values = true, ignore_case = true)]
+    #[arg(value_enum, hide_possible_values = true, ignore_case = true)]
     answer: Option<Answer>,
 }
 
