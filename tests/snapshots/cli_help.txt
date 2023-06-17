@@ -1,0 +1,9 @@
+Get funny gifs from https://yesno.wtf
+
+Usage: yesno [ANSWER]
+
+Arguments:
+  [ANSWER]  Answer either `yes`, `no` or `maybe`
+
+Options:
+  -h, --help  Print help
