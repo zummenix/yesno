@@ -14,3 +14,6 @@ main_error = "0.1"
 panic = "abort"
 lto = true
 
+[dev-dependencies]
+snapbox = "0.4.11"
+

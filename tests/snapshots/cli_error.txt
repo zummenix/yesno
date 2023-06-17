@@ -1,0 +1,4 @@
+error: invalid value 'unknown' for '[ANSWER]'
+  [possible values: yes, no, maybe]
+
+For more information, try '--help'.
