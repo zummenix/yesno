@@ -1,5 +1,6 @@
 use minreq;
 use snapbox::cmd::{cargo_bin, Command};
+use snapbox::file;
 
 #[test]
 fn without_args_check_reachability() -> Result<(), Box<dyn std::error::Error>> {
@@ -44,7 +45,7 @@ fn with_unknown_arg() {
         .arg("unknown")
         .assert()
         .failure()
-        .stderr_matches_path("tests/snapshots/cli_error.txt");
+        .stderr_matches(file!("snapshots/cli_error.txt"));
 }
 
 #[test]
@@ -53,7 +54,7 @@ fn with_help_arg() {
         .arg("--help")
         .assert()
         .success()
-        .stdout_matches_path("tests/snapshots/cli_help.txt");
+        .stdout_matches(file!("snapshots/cli_help.txt"));
 }
 
 fn yesno() -> Command {
