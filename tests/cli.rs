@@ -18,7 +18,7 @@ fn with_yes_arg() {
         .arg("yes")
         .assert()
         .success()
-        .stdout_matches(url("/yes/[..].gif"));
+        .stdout_eq(url("/yes/[..].gif"));
 }
 
 #[test]
@@ -27,7 +27,7 @@ fn with_no_arg() {
         .arg("no")
         .assert()
         .success()
-        .stdout_matches(url("/no/[..].gif"));
+        .stdout_eq(url("/no/[..].gif"));
 }
 
 #[test]
@@ -36,7 +36,7 @@ fn with_maybe_arg() {
         .arg("maybe")
         .assert()
         .success()
-        .stdout_matches(url("/maybe/[..].gif"));
+        .stdout_eq(url("/maybe/[..].gif"));
 }
 
 #[test]
@@ -45,7 +45,7 @@ fn with_unknown_arg() {
         .arg("unknown")
         .assert()
         .failure()
-        .stderr_matches(file!("snapshots/cli_error.txt"));
+        .stderr_eq(file!("snapshots/cli_error.txt"));
 }
 
 #[test]
@@ -54,7 +54,7 @@ fn with_help_arg() {
         .arg("--help")
         .assert()
         .success()
-        .stdout_matches(file!("snapshots/cli_help.txt"));
+        .stdout_eq(file!("snapshots/cli_help.txt"));
 }
 
 fn yesno() -> Command {

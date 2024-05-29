@@ -15,5 +15,5 @@ panic = "abort"
 lto = true
 
 [dev-dependencies]
-snapbox = "0.5"
+snapbox = "0.6"
 
