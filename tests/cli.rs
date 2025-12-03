@@ -1,5 +1,5 @@
 use minreq;
-use snapbox::cmd::{cargo_bin, Command};
+use snapbox::cmd::Command;
 use snapbox::file;
 
 #[test]
@@ -58,7 +58,7 @@ fn with_help_arg() {
 }
 
 fn yesno() -> Command {
-    Command::new(cargo_bin!("yesno"))
+    Command::new(snapbox::cmd::cargo_bin!("yesno"))
 }
 
 fn url(path: &str) -> String {
